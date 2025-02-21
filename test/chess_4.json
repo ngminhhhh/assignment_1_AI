@@ -1,0 +1,33 @@
+{
+    "chess_4_1": [
+      {"Rook": "C6"}, 
+      {"King": "C4"}, 
+      {"Knight": "B4"}, 
+      {"Pawn": "E4"}
+    ],
+    "chess_4_2": [
+      {"Rook": "C6"}, 
+      {"Queen": "E6"}, 
+      {"Bishop": "E5"}, 
+      {"Pawn": "D4"}
+    ],
+    "chess_4_3": [
+      {"Knight": "C5"}, 
+      {"Bishop": "D5"}, 
+      {"Rook": "E5"}, 
+      {"King": "F6"}
+    ],
+    "chess_4_4": [
+      {"Bishop": "C6"}, 
+      {"Rook": "D4"}, 
+      {"Queen": "D3"}, 
+      {"Pawn": "F3"}
+    ],
+    "chess_4_5": [
+      {"Queen": "D6"}, 
+      {"Pawn": "E4"}, 
+      {"Pawn": "F6"}, 
+      {"Bishop": "F4"}
+    ]
+  }
+  
