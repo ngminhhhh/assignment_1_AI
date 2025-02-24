@@ -18,9 +18,9 @@ def render(state, move_info = None, board_size = 8):
         print(f"Begining state")
     else:
         if move_info["type"] == "move":
-            print(f"Move {move_info["piece"]} from {map_to_block(move_info["old_pos"])} capture {move_info["captured"]} at {map_to_block(move_info["new_pos"])}")
+            print(f"Move {move_info['piece']} from {map_to_block(move_info['old_pos'])} capture {move_info['captured']} at {map_to_block(move_info['new_pos'])}")
         elif move_info["type"] == "undo":
-            print(f"Place back {move_info["piece"]} at {map_to_block(move_info["old_pos"])} and {move_info["captured"]} at {map_to_block(move_info["new_pos"])}")
+            print(f"Place back {move_info['piece']} at {map_to_block(move_info['old_pos'])} and {move_info['captured']} at {map_to_block(move_info['new_pos'])}")
 
     grid = [["." for _ in range(board_size)] for _ in range(board_size)]
     for piece in state:

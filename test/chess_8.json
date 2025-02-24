@@ -1,0 +1,52 @@
+{
+    "chess_8_1" : [
+        {"Knight": "C3"},
+        {"Knight": "C4"},
+        {"Bishop": "C5"},
+        {"Rook": "D4"},
+        {"Pawn": "E6"},
+        {"King": "F3"},
+        {"Rook": "F4"},
+        {"Pawn": "F5"}
+    ],
+    "chess_8_2" : [
+        {"Pawn": "C3"},
+        {"Knight": "C5"},
+        {"Pawn": "C6"},
+        {"Bishop": "D3"},
+        {"Rook": "D5"},
+        {"Bishop": "D6"},
+        {"King": "E5"},
+        {"Rook": "F4"}
+    ],
+    "chess_8_3" : [
+        {"Knight": "C3"},
+        {"Pawn": "C5"},
+        {"Bishop": "D3"},
+        {"Rook": "D5"},
+        {"King": "E3"},
+        {"Bishop": "E4"},
+        {"Pawn": "E6"},
+        {"Knight": "F3"}
+    ],
+    "chess_8_4" : [
+        {"Pawn": "C3"},
+        {"King": "C4"},
+        {"Queen": "D3"},
+        {"Bishop": "D6"},
+        {"Bishop": "E3"},
+        {"Pawn": "E4"},
+        {"Knight": "F3"},
+        {"Rook": "F5"}
+    ],
+    "chess_8_5" : [
+        {"Bishop": "C4"},
+        {"Knight": "C5"},
+        {"King": "D3"},
+        {"Pawn": "D6"},
+        {"Rook": "E3"},
+        {"Bishop": "F3"},
+        {"Knight": "F4"},
+        {"Pawn": "F5"}
+    ]
+}

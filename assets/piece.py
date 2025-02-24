@@ -182,7 +182,7 @@ class King(Piece):
 
     def get_valid_moves(self, pieces):
         moves = []
-        offsets = [(1, 0), (0, 1), (-1, 0), (0, -1), (1, 1), (-1, -1)]
+        offsets = [(1, 0), (0, 1), (-1, 0), (0, -1), (1, 1), (-1, -1), (-1, 1), (1, -1)]
 
         for dx, dy in offsets:
             nx = self.x + dx
@@ -203,56 +203,48 @@ class Queen(Piece):
     def get_valid_moves(self, pieces):
         moves = []
         
-        # Top-left (offset: -1, -1)
+        # Diagonal: Top-left (-1, -1)
         nx, ny = self.x - 1, self.y - 1
         while nx >= 0 and ny >= 0:
             piece = self.get_piece(nx, ny, pieces)
-
             if piece is not None:
                 moves.append((nx, ny, piece))
                 break
-            
             nx -= 1
             ny -= 1
 
-        # Top-right (offset: -1, +1)
+        # Diagonal: Top-right (-1, +1)
         nx, ny = self.x - 1, self.y + 1
         while nx >= 0 and ny < self.board_size:
             piece = self.get_piece(nx, ny, pieces)
-
             if piece is not None:
                 moves.append((nx, ny, piece))
                 break
-            
             nx -= 1
             ny += 1
 
-        # Bottom-left (offset: +1, -1)
+        # Diagonal: Bottom-left (+1, -1)
         nx, ny = self.x + 1, self.y - 1
         while nx < self.board_size and ny >= 0:
             piece = self.get_piece(nx, ny, pieces)
-
             if piece is not None:
                 moves.append((nx, ny, piece))
                 break
-            
             nx += 1
             ny -= 1
 
-        # Bottom-right (offset: +1, +1)
+        # Diagonal: Bottom-right (+1, +1)
         nx, ny = self.x + 1, self.y + 1
         while nx < self.board_size and ny < self.board_size:
             piece = self.get_piece(nx, ny, pieces)
-
             if piece is not None:
                 moves.append((nx, ny, piece))
                 break
-            
             nx += 1
             ny += 1
 
-        # Left (offset: -1, 0)
-        nx = self.x - 1
+        # Horizontal: Left (-1, 0)
+        nx, ny = self.x - 1, self.y  
         while nx >= 0:
             piece = self.get_piece(nx, ny, pieces)
             if piece is not None:
@@ -260,8 +252,7 @@ class Queen(Piece):
                 break
             nx -= 1
 
-        # Right (offset: +1, 0)
-        nx = self.x + 1
+        nx, ny = self.x + 1, self.y  
         while nx < self.board_size:
             piece = self.get_piece(nx, ny, pieces)
             if piece is not None:
@@ -269,8 +260,7 @@ class Queen(Piece):
                 break
             nx += 1
 
-        # Up (offset: 0, -1)
-        ny = self.y - 1
+        nx, ny = self.x, self.y - 1  
         while ny >= 0:
             piece = self.get_piece(nx, ny, pieces)
             if piece is not None:
@@ -278,8 +268,7 @@ class Queen(Piece):
                 break
             ny -= 1
 
-        # Down (offset: 0, +1)
-        ny = self.y + 1
+        nx, ny = self.x, self.y + 1  
         while ny < self.board_size:
             piece = self.get_piece(nx, ny, pieces)
             if piece is not None:
