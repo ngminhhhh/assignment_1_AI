@@ -27,7 +27,7 @@ def create_state(test):
 
     return state
 
-def measure(state, index, search):
+def measure(state, index, search, is_render):
     is_found_ans = False
     run_time = 0
     mem_usage = 0  # Bộ nhớ peak, tính bằng KB
@@ -36,17 +36,17 @@ def measure(state, index, search):
         tracemalloc.start()  # Bắt đầu theo dõi bộ nhớ
         start_time = time.perf_counter()
         move_history = []
-        is_found_ans = dfs(state, move_history)
+        is_found_ans = dfs(state, move_history, is_render)
         end_time = time.perf_counter()
         current, peak = tracemalloc.get_traced_memory()
         tracemalloc.stop()
         run_time = (end_time - start_time) * 1000  # ms
-        mem_usage = peak / 1024  # chuyển đổi sang KB
+        mem_usage = peak / 1024  # KB
 
     elif search == "Heuristic":
         tracemalloc.start()
         start_time = time.perf_counter()
-        is_found_ans, move_history = steppest_hill_climbing(state)
+        is_found_ans, move_history = steppest_hill_climbing(init_state=state, is_render=is_render)
         end_time = time.perf_counter()
         current, peak = tracemalloc.get_traced_memory()
         tracemalloc.stop()
@@ -65,17 +65,17 @@ def read_testcase(file_address, search):
     total_time = []
     for i, test in enumerate(testcase):
         state = create_state(testcase[test])
-        total_time.append(measure(state, i, search))
+        total_time.append(measure(state, i, search, is_render))
     
     return total_time
         
-def evaluate(search):
+def evaluate(search, is_render):
     print(f"Evaluate {search} function:")
     for i in range(4, 9):
         file_address = f'test/chess_{i}.json'
         print(f"Testcase {i} pieces: ")
 
-        total_time = read_testcase(file_address, search)
+        total_time = read_testcase(file_address, search, is_render)
 
         num_success = 0
         total_run_time = 0
@@ -93,10 +93,11 @@ def evaluate(search):
 
 if __name__ == "__main__":
     BOARD_SIZE = 8
+    is_render = False
     search_method = ["DFS", "Heuristic"]
 
     for search in search_method:
-        evaluate(search)
+        evaluate(search, is_render)
 
 
 
