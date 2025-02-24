@@ -58,7 +58,7 @@ def measure(state, index, search, is_render):
     return is_found_ans, run_time, mem_usage
 
     
-def read_testcase(file_address, search):
+def read_testcase(file_address, search, is_render):
     with open(file_address, "r") as file:
         testcase = json.load(file)
 
