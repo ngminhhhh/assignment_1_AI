@@ -2,7 +2,7 @@ from assets.piece import *
 from assets.render_func import *
 import random
 
-def heuristic_func(state, alpha = 1.0):
+def heuristic_func(state, alpha = 4.0):
     '''
         return number of pieces + number of valid steps - 1
     '''

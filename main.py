@@ -32,6 +32,9 @@ def measure(state, index, search, is_render):
     run_time = 0
     mem_usage = 0  # Bộ nhớ peak, tính bằng KB
 
+    if is_render:
+        render(state)
+
     if search == "DFS":
         tracemalloc.start()  # Bắt đầu theo dõi bộ nhớ
         start_time = time.perf_counter()
@@ -58,24 +61,26 @@ def measure(state, index, search, is_render):
     return is_found_ans, run_time, mem_usage
 
     
-def read_testcase(file_address, search, is_render):
+def read_testcase(file_address, search, is_render, num_tc):
     with open(file_address, "r") as file:
         testcase = json.load(file)
 
     total_time = []
     for i, test in enumerate(testcase):
-        state = create_state(testcase[test])
-        total_time.append(measure(state, i, search, is_render))
+        if i in num_tc:
+            state = create_state(testcase[test])
+            total_time.append(measure(state, i, search, is_render))
     
     return total_time
         
-def evaluate(search, is_render):
+def evaluate(search, is_render, st_num_pieces, end_num_pieces, num_tc):
     print(f"Evaluate {search} function:")
-    for i in range(4, 9):
+    
+    for i in range(st_num_pieces, end_num_pieces + 1):
         file_address = f'test/chess_{i}.json'
         print(f"Testcase {i} pieces: ")
 
-        total_time = read_testcase(file_address, search, is_render)
+        total_time = read_testcase(file_address, search, is_render, num_tc)
 
         num_success = 0
         total_run_time = 0
@@ -93,11 +98,15 @@ def evaluate(search, is_render):
 
 if __name__ == "__main__":
     BOARD_SIZE = 8
-    is_render = False
+    is_render = True
     search_method = ["DFS", "Heuristic"]
 
+    st_num_pieces = 4
+    end_num_pieces = 4
+    num_tc = [0]
+
     for search in search_method:
-        evaluate(search, is_render)
+        evaluate(search, is_render, st_num_pieces, end_num_pieces, num_tc)
 
 
 
